@@ -1,0 +1,9 @@
+xo:
+  build: .
+  ports:
+    - "8080:80"
+  links:
+    - redis:redis
+redis:
+  image: redis:3-alpine
+  
