@@ -3,7 +3,11 @@
 cd /opt/xo-server
 
 # Replace Redis Server configuration
-sed -i /#uri/a\\"    uri: 'redis://$REDIS_SERVER:$REDIS_PORT'" .xo-server.yaml
+if [ ! -z "$REDIS_ENV_REDIS_PASSWORD" ]; then
+  sed -i "s/#uri: ''/uri: 'redis://0:$REDIS_ENV_REDIS_PASSWORD@$REDIS_SERVER:$REDIS_PORT'/" .xo-server.yaml
+else
+  sed -i "s/#uri: ''/uri: 'redis://$REDIS_SERVER:$REDIS_PORT'/" .xo-server.yaml
+fi
 
 # Start Xen Orchestra
 echo "Starting Xen Orchestra..."
