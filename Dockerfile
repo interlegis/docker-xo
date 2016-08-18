@@ -29,6 +29,8 @@ RUN git clone -b stable https://github.com/vatesfr/xo-server && \
 
 EXPOSE 80
 
+ADD src/ /opt/xo-web/dist/
+
 ADD start.sh /usr/local/bin/start.sh
 RUN chmod a+x /usr/local/bin/start.sh
 
