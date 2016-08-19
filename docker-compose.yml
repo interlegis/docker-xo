@@ -10,4 +10,6 @@ redis:
   environment:
     - REDIS_REPLICATION_MODE=master
     - REDIS_PASSWORD=aGoodRedisPassword
+  volumes: 
+    - 'xoredisdata:/bitnami/redis'
   
