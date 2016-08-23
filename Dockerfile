@@ -18,7 +18,10 @@ RUN apt-get update && \
 
 RUN git clone -b stable https://github.com/vatesfr/xo-server && \
     git clone -b stable https://github.com/vatesfr/xo-web && \
-    cd xo-server && \
+    cd /opt/xo-web && \
+    git checkout tags/v5.1.9 && \
+    cd /opt/xo-server && \
+    git checkout tags/v5.1.6 && \
     npm install && npm run build && \
     cp sample.config.yaml .xo-server.yaml && \
     sed -i /mounts/a\\"    '/': '/opt/xo-web/dist'" .xo-server.yaml && \
