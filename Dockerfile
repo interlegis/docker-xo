@@ -24,8 +24,13 @@ RUN git clone -b stable https://github.com/vatesfr/xo-server && \
     sed -i /mounts/a\\"    '/': '/opt/xo-web/dist'" .xo-server.yaml && \
     cd /opt/xo-web && \
     npm i lodash.trim@3.0.1 && \
-    npm install && \
-    npm run build
+    npm install && npm run build
+
+RUN cd /opt/xo-server/node_modules && \
+    git clone https://github.com/vatesfr/xo-server-auth-ldap.git && \
+    cd xo-server-auth-ldap && \
+    git checkout tags/v0.5.1 && \
+    npm run build || npm install || npm run build
 
 EXPOSE 80
 
