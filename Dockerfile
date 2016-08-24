@@ -1,8 +1,7 @@
 FROM debian:jessie
 MAINTAINER Fabio Rauber <fabiorauber@gmail.com>
 
-ENV REDIS_SERVER="redis" \
-    REDIS_PORT="6379"
+ENV REDIS_SERVER="redis" 
 
 WORKDIR /opt
 
