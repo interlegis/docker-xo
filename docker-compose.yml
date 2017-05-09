@@ -2,9 +2,11 @@ xo:
   build: .
   #image: interlegis/xen-orchestra:5.1.3-6
   ports:
-    - "8080:80"
+    - "8000:80"
   links:
     - redis:redis
+  volumes: 
+    - 'xodata:/var/lib/xo-server/data'
 redis:
   image: bitnami/redis:latest
   environment:

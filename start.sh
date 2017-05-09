@@ -1,6 +1,6 @@
-#!/bin/bash
+#!/bin/sh
 
-cd /opt/xo-server
+cd /home/node/xo-server
 
 # Replace Redis Server configuration
 if [ ! -z "$REDIS_ENV_REDIS_PASSWORD" ]; then
@@ -9,6 +9,10 @@ else
   sed -i "s/#uri: ''/uri: 'redis:\/\/$REDIS_SERVER:$REDIS_PORT'/" .xo-server.yaml
 fi
 
+# storage directory and fix perms
+mkdir -p /var/lib/xo-server/data 
+chown -R ${USER}:${USER} /var/lib/xo-server/data
+
 # Start Xen Orchestra
 echo "Starting Xen Orchestra..."
-exec /usr/local/bin/node ./bin/xo-server
+cd /home/node/xo-server && exec yarn start

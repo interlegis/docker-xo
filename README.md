@@ -1,6 +1,6 @@
 # docker-xo
 
-Xen Orchestra Community Docker Image
+Alpine Linux based Xen Orchestra Community Docker Image
 
 ## Requirements
 
@@ -17,8 +17,15 @@ xo:
     - "8080:80"
   links:
     - redis:redis
+  volumes:
+    - 'xodata:/var/lib/xo-server/data'
 redis:
-  image: redis:3-alpine
+  image: bitnami/redis:latest
+  environment:
+    - REDIS_REPLICATION_MODE=master
+    - REDIS_PASSWORD=aGoodRedisPassword
+  volumes:
+    - 'xoredisdata:/bitnami/redis'
 ```
 
 ## Running
