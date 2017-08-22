@@ -4,7 +4,7 @@ MAINTAINER Fabio Rauber <fabiorauber@gmail.com>
 ENV REDIS_SERVER="redis" \
     REDIS_PORT="6379"
 
-LABEL xo-server=5.8.0 xo-web=5.8.0
+LABEL xo-server=5.11.0 xo-web=5.11.0
 
 ENV USER=node USER_HOME=/home/node XOA_PLAN=5 DEBUG=xo:main
 
