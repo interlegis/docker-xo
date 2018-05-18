@@ -1,6 +1,6 @@
 #!/bin/sh
 
-cd /home/node/xo-server
+cd /home/node/xen-orchestra/packages/xo-server
 
 # Replace Redis Server configuration
 if [ ! -z "$REDIS_ENV_REDIS_PASSWORD" ]; then
@@ -15,4 +15,4 @@ chown -R ${USER}:${USER} /var/lib/xo-server/data
 
 # Start Xen Orchestra
 echo "Starting Xen Orchestra..."
-cd /home/node/xo-server && exec yarn start
+cd /home/node/xen-orchestra/packages/xo-server && exec yarn start
