@@ -1,6 +1,6 @@
 xo:
   #build: .
-  image: interlegis/xen-orchestra:5.19.3
+  image: interlegis/xen-orchestra:5.25.1
   ports:
     - "8000:80"
   links:
