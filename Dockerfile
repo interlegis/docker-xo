@@ -1,22 +1,16 @@
-FROM node:6.14.4-alpine
+FROM node:8.12.0-alpine
 MAINTAINER Fabio Rauber <fabiorauber@gmail.com>
 
 ENV REDIS_SERVER="redis" \
-    REDIS_PORT="6379" \
-    YARN_VERSION=1.7.0
+    REDIS_PORT="6379"
 
-LABEL xo-server=5.25.1 xo-web=5.25.0
+LABEL xo-server=5.29.2 xo-web=5.29.1
 
 ENV USER=node USER_HOME=/home/node XOA_PLAN=5 DEBUG=xo:main
 
 # Upgrade yarn
 RUN apk update && apk upgrade && \
-    apk add --no-cache git python g++ make libc6-compat curl && \
-    curl -fSLO --compressed "https://yarnpkg.com/downloads/$YARN_VERSION/yarn-v$YARN_VERSION.tar.gz" \
-    && tar -xzf yarn-v$YARN_VERSION.tar.gz -C /opt/ \
-    && ln -snf /opt/yarn-v$YARN_VERSION/bin/yarn /usr/local/bin/yarn \
-    && ln -snf /opt/yarn-v$YARN_VERSION/bin/yarnpkg /usr/local/bin/yarnpkg \
-    && rm yarn-v$YARN_VERSION.tar.gz
+    apk add --no-cache git python g++ make libc6-compat curl
 
 WORKDIR /home/node
 
