@@ -1,10 +1,10 @@
-FROM node:8.12.0-alpine
+FROM node:8.16.2-alpine
 MAINTAINER Fabio Rauber <fabiorauber@gmail.com>
 
 ENV REDIS_SERVER="redis" \
     REDIS_PORT="6379"
 
-LABEL xo-server=5.48.0 xo-web=5.48.1
+LABEL xo-server=5.51.1 xo-web=5.51.0
 
 ENV USER=node USER_HOME=/home/node XOA_PLAN=5 DEBUG=xo:main
 
